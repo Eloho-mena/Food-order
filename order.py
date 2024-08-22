@@ -49,7 +49,7 @@ class Product(db.Model):
 
 class OrderItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    order_date = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
+    order_date = db.Column(db.Integer, db.ForeignKey('order.date'), nullable=False)
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Float, nullable=False)
