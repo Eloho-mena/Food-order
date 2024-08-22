@@ -67,16 +67,15 @@ def sign_up():
         username = request.form.get('username')
         password = request.form.get('password')
         if not username or not password:
-            
-            return jsonify({"redirect": url_for('sign_up')})
-
-
-        user = User(username=username)
-        user.set_password(password)
-        db.session.add(user)
-        db.session.commit()
-        flash('Sign up successful! Please log in.', 'success')
-        return jsonify({"redirect": url_for('login')})
+            return jsonify({"response": "type something werey", "status": "failed"})
+        
+        else:
+            user = User(username=username)
+            user.set_password(password)
+            db.session.add(user)
+            db.session.commit()
+            flash('Sign up successful! Please log in.', 'success')
+            return jsonify({"redirect": url_for('login')})
     return jsonify({"redirect": url_for('sign_up')})
 
 @app.route("/login", methods=['POST'])
